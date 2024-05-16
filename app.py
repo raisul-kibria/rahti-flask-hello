@@ -10,7 +10,7 @@ import flask
 # In a proper Flask application all these templates should be in indepent files
 STYLE = """
 body {
-  background-color: silver;
+  background-color: blue;
   font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
   font-size: 14px;
   padding: 10%;
@@ -47,8 +47,8 @@ config = {}
 
 # Flask app object
 app = flask.Flask(__name__,
-                  static_url_path='/static',
-                  static_folder='/static')
+                  static_url_path='static',
+                  static_folder='static')
 
 # Routes
 @app.route("/", methods=['GET'])
@@ -56,7 +56,7 @@ def home():
     '''
       Hello page, shows photos in the /static folder
     '''
-    kittens = Path('/static/').rglob('*.jpg')
+    kittens = Path('static/').rglob('*.jpg')
     return flask.render_template_string(
         PAGE,
         student=config["student"],
